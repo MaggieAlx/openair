@@ -1,5 +1,21 @@
 #' York regression function
 #' 
+#' Function for calculating the slope of variables using the York regression, 
+#' which accounts for errors provided for both x and y. 
+#' The York regression (YR) was suggested by Derek York from the University of Toronto in 1968 (CITE).
+#' YR incorporates the correlation coefficient of errors in the minimising function. 
+#' The distance minimised for YR has an angle which depends on the weight of x and y errors. 
+#' When errors are higher for a variable, the relevant data points will weigh less, due to their bigger uncertainty. 
+#' Therefore, the angle grows towards the y axis, when errors are higher for the x variables, and vice versa.  
+#' As discussed in Wu and Yu (CITE), the York approach can still work well if the error in one of the variables is unknown 
+#' or the measurement error cannot be trusted.
+#' 
+#' The York approach is common among the geophysical community, but very limited for othe sciences (CITE WEHR).
+#' 
+#' The slope, slope error and intercept are calculated using the YorkFit() function.
+#' 
+#' YR can also be incorporated in polar plots, where the inverse effect of x/y and y/x is more distinct that Ordinary Least Squares.
+#' 
 #' @export
 YorkFit <- function(input_data, X = "X", Y = "Y",
                     Xstd = "Xstd", Ystd = "Ystd",
@@ -103,3 +119,4 @@ YorkFit <- function(input_data, X = "X", Y = "Y",
   
   return(ans)
 }
+
