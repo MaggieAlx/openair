@@ -16,6 +16,17 @@
 #' 
 #' YR can also be incorporated in polar plots, where the inverse effect of x/y and y/x is more distinct that Ordinary Least Squares.
 #' 
+#' 
+#' @param X First variable 
+#' 
+#' @param Y Second variable 
+#' 
+#' @param Xstd Errors in first variavle (X)
+#' 
+#' @param Ystd Erros in second variavle (Y)
+#' 
+#' @param weight Can be supplied to apply to errors
+#' 
 #' @export
 YorkFit <- function(input_data, X = "X", Y = "Y",
                     Xstd = "Xstd", Ystd = "Ystd",
