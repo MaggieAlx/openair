@@ -16,14 +16,15 @@
 #' 
 #' YR can also be incorporated in polar plots, where the inverse effect of x/y and y/x is more distinct that Ordinary Least Squares.
 #' 
+#' @param data A data frame minimally containing 2 pollutants and at least one column with variable errors.
 #' 
-#' @param X First variable 
+#' @param X Name of first variable 
 #' 
-#' @param Y Second variable 
+#' @param Y Name of second variable 
 #' 
-#' @param Xstd Errors in first variavle (X)
+#' @param Xstd Name of errors in first variable (X)
 #' 
-#' @param Ystd Erros in second variavle (Y)
+#' @param Ystd Name of errors in second variable (Y)
 #' 
 #' @param weight Can be supplied to apply to errors
 #' 
@@ -50,13 +51,6 @@ YorkFit <- function(input_data, X = "X", Y = "Y",
   # don't try regression if < 3 points
   if (sum(!is.na(X)) < 3 || sum(!is.na(Y)) < 3) return()
   
-  # used in polar plots - Gaussian kernel weighting
-  if (!all(is.na(weight))) {
-    
-    Xstd <- Xstd / weight
-    Ystd <- Ystd / weight
-    
-  }
   
   Xw <- 1 / (Xstd^2) # X weights
   Yw <- 1 / (Ystd^2) # Y weights
